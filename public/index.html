@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Web CRUD Buku</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f3f4f6; 
+            margin: 0; 
+            padding: 30px 20px; 
+            color: #333;
+        }
+        .container { 
+            display: flex; 
+            gap: 20px; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            align-items: flex-start;
+        }
+        .panel { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+        }
+        .left-panel { flex: 1; }
+        .right-panel { flex: 1.5; }
+        
+        h2 { margin-top: 0; color: #1f2937; font-size: 1.25rem; margin-bottom: 20px; border-bottom: 1px solid #e5e7eb; padding-bottom: 10px; }
+        
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            margin-bottom: 15px; 
+            border: 1px solid #d1d5db; 
+            border-radius: 6px; 
+            box-sizing: border-box;
+            background-color: #f9fafb;
+        }
+        input:focus { outline: none; border-color: #3b82f6; background-color: #fff; }
+        
+        button { 
+            padding: 10px 15px; 
+            border: none; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            font-weight: 600; 
+            transition: 0.2s;
+        }
+        .btn-save { background: #3b82f6; color: white; width: 100%; }
+        .btn-save:hover { background: #2563eb; }
+        
+        ul { list-style: none; padding: 0; margin: 0; }
+        li { 
+            background: #fff; 
+            margin-bottom: 12px; 
+            padding: 15px; 
+            border-radius: 6px; 
+            border: 1px solid #e5e7eb;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .book-info strong { display: block; font-size: 1.05rem; color: #111827; }
+        .book-info small { color: #6b7280; }
+        
+        .actions { display: flex; gap: 8px; }
+        .btn-edit { background: #f59e0b; color: white; padding: 6px 12px; font-size: 0.85rem;}
+        .btn-edit:hover { background: #d97706; }
+        .btn-delete { background: #ef4444; color: white; padding: 6px 12px; font-size: 0.85rem;}
+        .btn-delete:hover { background: #dc2626; }
+
+        @media (max-width: 600px) {
+            .container { flex-direction: column; }
+            .left-panel, .right-panel { width: 100%; box-sizing: border-box; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Bagian Kiri: Form -->
+        <div class="panel left-panel">
+            <h2>Tambah / Edit Buku</h2>
+            <div id="form-container">
+                <input type="hidden" id="bookId">
+                <input type="text" id="judul" placeholder="Judul Buku" required>
+                <input type="text" id="penulis" placeholder="Nama Penulis" required>
+                <button type="button" class="btn-save" onclick="saveBook()">Simpan Data</button>
+            </div>
+        </div>
+
+        <!-- Bagian Kanan: Daftar Buku -->
+        <div class="panel right-panel">
+            <h2>Daftar Buku</h2>
+            <ul id="bookList"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
